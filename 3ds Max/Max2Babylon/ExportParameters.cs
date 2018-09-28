@@ -11,6 +11,7 @@
         public bool generateManifest = false;
         public bool autoSave3dsMaxFile = false;
         public bool exportTangents = true;
+        public bool exportBinary = true;
         public string txtQuality = "100";
         public bool mergeAOwithMR = true;
         public bool dracoCompression = false;

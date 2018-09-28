@@ -150,13 +150,16 @@ namespace Max2Babylon
                 File.WriteAllText(outputGltfFile, gltfToJson(gltf));
 
                 // Write .bin file
-                string outputBinaryFile = Path.ChangeExtension(outputFile, "bin");
-                using (BinaryWriter writer = new BinaryWriter(File.Open(outputBinaryFile, FileMode.Create)))
+                if(exportParameters.exportBinary)
                 {
-                    gltf.BuffersList.ForEach(buffer =>
+                    string outputBinaryFile = Path.ChangeExtension(outputFile, "bin");
+                    using (BinaryWriter writer = new BinaryWriter(File.Open(outputBinaryFile, FileMode.Create)))
                     {
-                        buffer.bytesList.ForEach(b => writer.Write(b));
-                    });
+                        gltf.BuffersList.ForEach(buffer =>
+                        {
+                            buffer.bytesList.ForEach(b => writer.Write(b));
+                        });
+                    }
                 }
             }
             else
